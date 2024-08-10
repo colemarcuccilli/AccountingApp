@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Balance Sheet</h1>
+<h2>As of {{ as_of_date }}</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Assets</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Account</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for asset in balance_sheet.assets %}
+                <tr>
+                    <td>{{ asset.account }}</td>
+                    <td>{{ asset.amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total Assets</th>
+                    <th>{{ balance_sheet.total_assets }}</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="col-md-4">
+        <h3>Liabilities</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Account</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for liability in balance_sheet.liabilities %}
+                <tr>
+                    <td>{{ liability.account }}</td>
+                    <td>{{ liability.amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total Liabilities</th>
+                    <th>{{ balance_sheet.total_liabilities }}</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="col-md-4">
+        <h3>Equity</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Account</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for equity_item in balance_sheet.equity %}
+                <tr>
+                    <td>{{ equity_item.account }}</td>
+                    <td>{{ equity_item.amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total Equity</th>
+                    <th>{{ balance_sheet.total_equity }}</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <h3>Total Liabilities and Equity</h3>
+        <p>{{ balance_sheet.total_liabilities + balance_sheet.total_equity }}</p>
+    </div>
+</div>
+{% endblock %}

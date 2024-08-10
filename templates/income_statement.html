@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Income Statement</h1>
+<h2 class="mb-3">{{ start_date }} to {{ end_date }}</h2>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h3>Revenue</h3>
+        <table class="table">
+            <tbody>
+                {% for item in revenue %}
+                <tr>
+                    <td>{{ item.account }}</td>
+                    <td>{{ item.amount }}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-primary">
+                    <th>Total Revenue</th>
+                    <th>{{ total_revenue }}</th>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="mt-4">Expenses</h3>
+        <table class="table">
+            <tbody>
+                {% for item in expenses %}
+                <tr>
+                    <td>{{ item.account }}</td>
+                    <td>{{ item.amount }}</td>
+                </tr>
+                {% endfor %}
+                <tr class="table-primary">
+                    <th>Total Expenses</th>
+                    <th>{{ total_expenses }}</th>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="mt-4">Net Income</h3>
+        <table class="table">
+            <tbody>
+                <tr class="table-success">
+                    <th>Net Income</th>
+                    <th>{{ net_income }}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<a href="{{ url_for('financial_statements.index') }}" class="btn btn-secondary">Back to Financial Statements</a>
+{% endblock %}

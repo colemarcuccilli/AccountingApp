@@ -1,0 +1,57 @@
+id,name,category,subcategory,balance
+1000,Cash on Hand,Assets,Current Assets,0
+1010,Cash in Bank,Assets,Current Assets,7000.0
+1020,Petty Cash,Assets,Current Assets,0
+1100,Accounts Receivable,Assets,Current Assets,0
+1200,Inventory - Cars,Assets,Current Assets,1000.0
+1210,Inventory - Parts and Accessories,Assets,Current Assets,0
+1300,Prepaid Expenses,Assets,Current Assets,0
+1500,Land,Assets,Fixed Assets,2000.0
+1510,Buildings,Assets,Fixed Assets,0
+1520,Leasehold Improvements,Assets,Fixed Assets,0
+1530,Office Equipment,Assets,Fixed Assets,0
+1540,Computer Equipment,Assets,Fixed Assets,0
+1550,Furniture and Fixtures,Assets,Fixed Assets,0
+1560,Vehicles,Assets,Fixed Assets,0
+1570,Accumulated Depreciation,Assets,Fixed Assets,0
+2000,Accounts Payable,Liabilities,Current Liabilities,0
+2100,Short-term Loans,Liabilities,Current Liabilities,0
+2200,Sales Tax Payable,Liabilities,Current Liabilities,0
+2300,Payroll Liabilities,Liabilities,Current Liabilities,0
+2400,Unearned Revenue,Liabilities,Current Liabilities,0
+2500,Customer Deposits,Liabilities,Current Liabilities,0
+2600,Long-term Loans,Liabilities,Long-term Liabilities,0
+2700,Mortgage Payable,Liabilities,Long-term Liabilities,0
+3000,Owner's Capital,Equity,Owner's Equity,10000.0
+3010,Owner's Drawings,Equity,Owner's Equity,0
+3100,Retained Earnings,Equity,Owner's Equity,0
+4000,Car Sales Revenue,Revenue,Sales Revenue,0
+4010,Parts and Accessories Sales,Revenue,Sales Revenue,0
+4020,Service Revenue,Revenue,Sales Revenue,0
+4030,Extended Warranty Revenue,Revenue,Sales Revenue,0
+4040,Financing Revenue,Revenue,Sales Revenue,0
+4100,Advertising Revenue,Revenue,Other Revenue,0
+4200,Interest Income,Revenue,Other Revenue,0
+5000,Cost of Cars Sold,Cost of Goods Sold,COGS,0
+5010,Cost of Parts and Accessories Sold,Cost of Goods Sold,COGS,0
+5020,Cost of Services,Cost of Goods Sold,COGS,0
+6000,Advertising and Promotion,Operating Expenses,Selling Expenses,0
+6010,Sales Commissions,Operating Expenses,Selling Expenses,0
+6020,Website Maintenance,Operating Expenses,Selling Expenses,0
+6030,Marketing Expenses,Operating Expenses,Selling Expenses,0
+6100,Office Supplies,Operating Expenses,Administrative Expenses,0
+6110,Rent Expense,Operating Expenses,Administrative Expenses,0
+6120,Utilities Expense,Operating Expenses,Administrative Expenses,0
+6130,Insurance Expense,Operating Expenses,Administrative Expenses,0
+6140,Depreciation Expense,Operating Expenses,Administrative Expenses,0
+6150,Salaries and Wages,Operating Expenses,Administrative Expenses,0
+6160,Payroll Taxes,Operating Expenses,Administrative Expenses,0
+6170,Professional Fees,Operating Expenses,Administrative Expenses,0
+6200,Vehicle Maintenance,Operating Expenses,Other Operating Expenses,0
+6210,Fuel and Oil,Operating Expenses,Other Operating Expenses,0
+6220,Licensing and Registration,Operating Expenses,Other Operating Expenses,0
+6230,Training and Development,Operating Expenses,Other Operating Expenses,0
+6240,Bank Charges,Operating Expenses,Other Operating Expenses,0
+6250,Travel and Entertainment,Operating Expenses,Other Operating Expenses,0
+7000,Interest Expense,Non-Operating Expenses,Other Expenses,0
+7100,Loss on Sale of Assets,Non-Operating Expenses,Other Expenses,0

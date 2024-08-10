@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Budget Comparison for {{ year }}</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Account</th>
+            <th>Budgeted</th>
+            <th>Actual</th>
+            <th>Variance</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for account_id, data in comparison.items() %}
+        <tr>
+            <td>{{ get_account_name(account_id) }}</td>
+            <td>{{ data.budgeted | format_currency }}</td>
+            <td>{{ data.actual | format_currency }}</td>
+            <td>{{ data.variance | format_currency }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

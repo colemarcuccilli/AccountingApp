@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Tax Report</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Tax Report for {{ report.start_date }} to {{ report.end_date }}</h5>
+        <p class="card-text">Revenue: {{ report.revenue }}</p>
+        <p class="card-text">Expenses: {{ report.expenses }}</p>
+        <p class="card-text">Net Income: {{ report.net_income }}</p>
+        <p class="card-text">Estimated Tax (30%): {{ report.estimated_tax }}</p>
+    </div>
+</div>
+
+<a href="{{ url_for('tax_reporting.index') }}" class="btn btn-secondary mt-3">Back to Tax Reporting</a>
+{% endblock %}

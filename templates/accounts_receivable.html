@@ -1,0 +1,80 @@
+<!-- File: templates/accounts_receivable.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="accounts-receivable">
+    <h1>Accounts Receivable</h1>
+    
+    <div class="ar-filters">
+        <div class="form-group">
+            <label for="customer-filter">Customer:</label>
+            <select id="customer-filter">
+                <option value="">All Customers</option>
+                {% for customer in customers %}
+                <option value="{{ customer.id }}">{{ customer.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="as-of-date">As of Date:</label>
+            <input type="date" id="as-of-date" value="{{ today_date }}">
+        </div>
+        <button id="apply-filters">Apply Filters</button>
+    </div>
+
+    <div class="ar-summary">
+        <h2>Accounts Receivable Summary</h2>
+        <div id="ar-charts">
+            <div id="aging-chart"></div>
+            <div id="status-chart"></div>
+        </div>
+        <div id="collection-efficiency"></div>
+    </div>
+
+    <div class="ar-details">
+        <h2>Accounts Receivable Details</h2>
+        <table id="ar-table">
+            <thead>
+                <tr>
+                    <th>Invoice #</th>
+                    <th>Customer</th>
+                    <th>Invoice Date</th>
+                    <th>Due Date</th>
+                    <th>Total Amount</th>
+                    <th>Remaining</th>
+                    <th>Days Overdue</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- AR data will be dynamically populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="aging-summary">
+        <h2>Aging Summary</h2>
+        <table id="aging-table">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Current</th>
+                    <th>1-30 Days</th>
+                    <th>31-60 Days</th>
+                    <th>60+ Days</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aging summary data will be dynamically populated here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/accounts_receivable.js') }}"></script>
+{% endblock %}

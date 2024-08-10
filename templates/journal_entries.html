@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Journal Entries</h1>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<a href="{{ url_for('journal_entries.add') }}" class="btn btn-primary mb-3">Add Journal Entry</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Debit Account</th>
+            <th>Credit Account</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in entries %}
+        <tr>
+            <td>{{ entry.get('date', 'N/A') }}</td>
+            <td>{{ entry.get('description', 'N/A') }}</td>
+            <td>{{ entry.get('debit_account_id', 'N/A') }}</td>
+            <td>{{ entry.get('credit_account_id', 'N/A') }}</td>
+            <td>{{ entry.get('amount', '$0.00') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

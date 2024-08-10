@@ -1,0 +1,6 @@
+id,date,description,debit_account_id,credit_account_id,amount1,2024-08-08,test trans,1010,1200,5000.0
+1,2024-08-08,Swindle Investment,1010,3000,5000
+2,2024-06-04,sold car,1010,1200,2000
+3,2024-07-01,bought land,1500,1010,2000
+4,2024-05-04,Cole Investment,1010,3000,5000
+5,2024-07-04,bought car,1200,1010,3000

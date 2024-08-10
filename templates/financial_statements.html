@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Financial Statements</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Income Statement</h5>
+                <form action="{{ url_for('financial_statements.income_statement') }}" method="get">
+                    <div class="mb-3">
+                        <label for="start_date" class="form-label">Start Date</label>
+                        <input type="date" class="form-control" id="start_date" name="start_date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="end_date" class="form-label">End Date</label>
+                        <input type="date" class="form-control" id="end_date" name="end_date" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Generate Income Statement</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Balance Sheet</h5>
+                <form action="{{ url_for('financial_statements.balance_sheet') }}" method="get">
+                    <div class="mb-3">
+                        <label for="as_of_date" class="form-label">As of Date</label>
+                        <input type="date" class="form-control" id="as_of_date" name="as_of_date" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Generate Balance Sheet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

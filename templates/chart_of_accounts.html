@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Chart of Accounts</h1>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Understanding the Chart of Accounts</h5>
+        <p>The Chart of Accounts is a listing of all accounts used in your car dealership's general ledger. It's organized into categories and subcategories to help you better understand your financial structure.</p>
+        <ul>
+            <li><strong>Assets:</strong> Resources owned by your dealership (e.g., cash, inventory, equipment)</li>
+            <li><strong>Liabilities:</strong> Debts or obligations owed by your dealership (e.g., loans, accounts payable)</li>
+            <li><strong>Equity:</strong> Owner's stake in the dealership</li>
+            <li><strong>Revenue:</strong> Income earned from car sales, services, and other activities</li>
+            <li><strong>Cost of Goods Sold:</strong> Direct costs associated with selling cars and providing services</li>
+            <li><strong>Operating Expenses:</strong> Costs incurred in running the dealership</li>
+            <li><strong>Non-Operating Expenses:</strong> Expenses not directly related to the main operations</li>
+        </ul>
+    </div>
+</div>
+
+<a href="{{ url_for('chart_of_accounts.add') }}" class="btn btn-primary mb-3">Add Custom Account</a>
+
+{% for category, subcategories in structured_accounts.items() %}
+    <h2>{{ category }}</h2>
+    {% for subcategory, accounts in subcategories.items() %}
+        <h3 class="ms-3">{{ subcategory }}</h3>
+        <table class="table table-striped ms-4">
+            <thead>
+                <tr>
+                    <th>Account Code</th>
+                    <th>Name</th>
+                    <th>Balance</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for account in accounts %}
+                <tr>
+                    <td>{{ account.id }}</td>
+                    <td>{{ account.name }}</td>
+                    <td>{{ account.balance }}</td>
+                    <td>
+                        <a href="{{ url_for('chart_of_accounts.edit', id=account.id) }}" class="btn btn-sm btn-secondary">Edit</a>
+                        <form action="{{ url_for('chart_of_accounts.delete', id=account.id) }}" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this account?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+{% endfor %}
+{% endblock %}

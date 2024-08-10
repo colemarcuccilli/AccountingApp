@@ -1,0 +1,83 @@
+<!-- File: templates/bills.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bills">
+    <h1>Bills</h1>
+    
+    <div class="bill-form">
+        <h2>New Bill</h2>
+        <form id="new-bill-form">
+            <div class="form-group">
+                <label for="vendor">Vendor:</label>
+                <select id="vendor" required>
+                    <option value="">Select a vendor</option>
+                    {% for vendor in vendors %}
+                    <option value="{{ vendor.id }}">{{ vendor.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="bill-date">Bill Date:</label>
+                <input type="date" id="bill-date" required>
+            </div>
+            <div class="form-group">
+                <label for="due-date">Due Date:</label>
+                <input type="date" id="due-date" required>
+            </div>
+            <div id="bill-items">
+                <!-- Bill items will be dynamically added here -->
+            </div>
+            <button type="button" id="add-item">Add Item</button>
+            <button type="submit">Create Bill</button>
+        </form>
+    </div>
+
+    <div class="bill-list">
+        <h2>Bill List</h2>
+        <table id="bills-table">
+            <thead>
+                <tr>
+                    <th>Bill #</th>
+                    <th>Vendor</th>
+                    <th>Bill Date</th>
+                    <th>Due Date</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bill in bills %}
+                <tr data-id="{{ bill.id }}">
+                    <td>{{ bill.id }}</td>
+                    <td>{{ bill.vendor.name }}</td>
+                    <td>{{ bill.bill_date | date }}</td>
+                    <td>{{ bill.due_date | date }}</td>
+                    <td>{{ bill.total_amount | currency }}</td>
+                    <td>{{ bill.status }}</td>
+                    <td>
+                        <button class="view-btn">View</button>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="bill-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Bill Details</h2>
+            <div id="bill-details"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/bills.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Budgeting</h1>
+
+<form method="post" action="{{ url_for('budgeting.set_budget') }}">
+    <div class="mb-3">
+        <label for="year" class="form-label">Year</label>
+        <input type="number" class="form-control" id="year" name="year" value="{{ current_year }}" required>
+    </div>
+
+    {% for category, accounts in account_categories.items() %}
+        <h2>{{ category }}</h2>
+        {% for account in accounts %}
+            <div class="mb-3">
+                <label for="budget_{{ account.id }}" class="form-label">{{ account.name }}</label>
+                <input type="number" step="0.01" class="form-control budget-input" id="budget_{{ account.id }}" name="budget_{{ account.id }}" 
+                       value="{{ budget.get(account.id, 0)|round(2) }}">
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <div class="mb-3">
+        <h3>Total Budget: $<span id="total-budget">0.00</span></h3>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Set Budget</button>
+</form>
+
+<a href="{{ url_for('budgeting.compare_budget') }}" class="btn btn-secondary mt-3">Compare Budget to Actual</a>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const budgetInputs = document.querySelectorAll('.budget-input');
+    const totalBudgetElement = document.getElementById('total-budget');
+
+    function updateTotalBudget() {
+        let total = 0;
+        budgetInputs.forEach(input => {
+            total += parseFloat(input.value) || 0;
+        });
+        totalBudgetElement.textContent = total.toFixed(2);
+    }
+
+    budgetInputs.forEach(input => {
+        input.addEventListener('input', updateTotalBudget);
+    });
+
+    updateTotalBudget();
+});
+</script>
+{% endblock %}
